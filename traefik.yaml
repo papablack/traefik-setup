@@ -1,0 +1,37 @@
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: false
+
+log:
+  level: "DEBUG"
+
+accessLog: {}
+
+api:
+  dashboard: true
+  insecure: true
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: "net-bot@papa.black"
+      storage: "/letsencrypt/acme.json"
+      httpChallenge:
+        entryPoint: "web"
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+    watch: true
+
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+  leet:
+    address: ":1337"
+  leet_plus:
+    address: ":1338"
+
